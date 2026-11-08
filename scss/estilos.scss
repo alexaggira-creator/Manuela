@@ -1,0 +1,399 @@
+// estilos.scss - Hoja de estilo Sass compilable con acabado UI/UX profesional
+@use 'variables' as *;
+
+// 1. SELECTOR DE ATRIBUTO Y VARIABLES CSS NATIVAS (:root)
+// Cumple: Selector de atributo [data-theme="light"], Paleta de variables CSS (:root)
+:root, [data-theme="light"] {
+  --color-primario: #{$color-primario};
+  --color-secundario: #{$color-secundario};
+  --color-secundario-dark: #{$color-secundario-dark};
+  --color-acento: #{$color-acento};
+  --color-acento-hover: #{$color-acento-hover};
+  --color-fondo-claro: #{$color-fondo-claro};
+  --color-superficie: #{$color-superficie};
+  --color-oscuro: #{$color-oscuro};
+  --color-texto-muted: #{$color-texto-muted};
+  --color-borde: #{$color-borde};
+  --color-peligro: #{$color-peligro};
+  --fuente-base: #{$fuente-principal};
+  --sombra-tarjeta: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --sombra-flotante: 0 20px 30px -10px rgba(16, 124, 65, 0.2);
+}
+
+// MIXIN DE SASS (Requisito 5: un mixin de Sass)
+@mixin tarjeta-sombra($radio: $radio-tarjeta) {
+  border-radius: $radio;
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-tarjeta);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+// 2. SELECTOR DE ETIQUETA
+// Cumple: Selector de etiqueta (body)
+body {
+  font-family: var(--fuente-base);
+  background-color: var(--color-fondo-claro);
+  color: var(--color-oscuro);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+// 3. PERSONALIZACIÓN DE BOOTSTRAP (Requisito 4: dos componentes sin editar bootstrap)
+// Componente 1: Navbar personalizada con Sass, Flexbox y modelo de caja
+.navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-borde);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 0.85rem 0;
+
+  // Anidamiento en Sass
+  .navbar-brand {
+    font-weight: 800;
+    font-size: 1.45rem;
+    letter-spacing: -0.5px;
+    color: var(--color-secundario) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    // Transición 1
+    transition: transform 0.25s ease, color 0.25s ease;
+
+    .icono-rayo {
+      font-size: 1.6rem;
+      filter: drop-shadow(0 2px 4px rgba(255, 159, 28, 0.4));
+    }
+
+    // Pseudoclase :hover
+    &:hover {
+      color: var(--color-secundario-dark) !important;
+      transform: scale(1.03);
+    }
+  }
+
+  .nav-link {
+    font-weight: 600;
+    color: #475569 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--color-secundario) !important;
+      background-color: rgba(16, 124, 65, 0.08);
+    }
+
+    &.active {
+      color: var(--color-secundario) !important;
+      background-color: rgba(16, 124, 65, 0.12);
+    }
+  }
+}
+
+// Componente 2: Botones Bootstrap personalizados (.btn-primary y .btn-success)
+.btn-primary {
+  background: linear-gradient(135deg, #0d6efd, #0b5ed7) !important;
+  border: none !important;
+  padding: 10px 24px; // Modelo de caja
+  border-radius: $radio-boton;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  // Transición 2
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(13, 110, 253, 0.25);
+
+  &:hover {
+    background: linear-gradient(135deg, #0b5ed7, #084298) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.35);
+  }
+
+  // Pseudoclase :focus
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.35) !important;
+  }
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #107c41, #0d6836) !important;
+  border: none !important;
+  padding: 10px 24px;
+  border-radius: $radio-boton;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(16, 124, 65, 0.25);
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #0d6836, #094725) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 124, 65, 0.35);
+  }
+}
+
+// 4. SELECTOR DE CLASE Y MODELO DE CAJA
+// Cumple: Selector de clase (.seccion-hero, .tarjeta-estilo)
+.seccion-hero {
+  background: linear-gradient(135deg, rgba(16, 124, 65, 0.95), rgba(13, 110, 253, 0.9)), 
+              radial-gradient(circle at top right, rgba(255, 159, 28, 0.3), transparent 60%);
+  color: #ffffff;
+  padding: 4.5rem 2rem; // Padding modelo de caja
+  margin-bottom: 2.5rem; // Margin modelo de caja
+  border-radius: 24px;   // Border-radius
+  box-shadow: 0 15px 35px rgba(16, 124, 65, 0.18); // Box-shadow
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+}
+
+// 5. SELECTOR DE ID
+// Cumple: Selector de ID (#buscador-input, #lista-carrito, #total-carrito)
+#buscador-input {
+  border: 2px solid var(--color-borde);
+  padding: 14px 22px;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 540px;
+  outline: none;
+  font-size: 1rem;
+  background-color: var(--color-superficie);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+
+  &:focus {
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 4px rgba(16, 124, 65, 0.18);
+    transform: translateY(-1px);
+  }
+}
+
+#total-carrito {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-secundario);
+}
+
+// 6. FLEXBOX EN EL MENÚ Y FILTROS (Requisito 3)
+.menu-navegacion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+// 7. SELECTOR HIJO DIRECTO (>)
+// Cumple: Selector hijo (>)
+.contenedor-filtros > button {
+  border: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+  color: #475569;
+  padding: 9px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    border-color: var(--color-secundario);
+    color: var(--color-secundario);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 124, 65, 0.15);
+  }
+
+  &.activo {
+    background: linear-gradient(135deg, var(--color-secundario), var(--color-secundario-dark));
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(16, 124, 65, 0.3);
+    transform: translateY(-1px);
+  }
+}
+
+// 8. GRID EN EL CATÁLOGO (Requisito 3)
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 28px;
+  margin-top: 24px;
+}
+
+// 9. SELECTOR DESCENDIENTE
+// Cumple: Selector descendiente (.catalogo-grid .card-producto)
+.catalogo-grid .card-producto {
+  @include tarjeta-sombra(18px);
+  border: 1px solid var(--color-borde);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 30px -8px rgba(15, 23, 42, 0.12);
+    border-color: #cbd5e1;
+  }
+
+  .card-cuerpo {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
+
+// 10. SELECTORES AGRUPADOS (,)
+// Cumple: Selectores agrupados
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--color-oscuro);
+  letter-spacing: -0.3px;
+}
+
+// 11. PSEUDOCLASE :nth-child() Y PSEUDOCLASE ADICIONAL (:disabled)
+// Cumple: :nth-child() y una más (:disabled)
+.lista-estadisticas li:nth-child(even) {
+  background-color: rgba(16, 124, 65, 0.05);
+}
+
+.lista-estadisticas li:nth-child(odd) {
+  background-color: var(--color-superficie);
+}
+
+button:disabled, .btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+// 12. TARJETA CARRITO & COMPONENTES VISUALES
+.tarjeta-carrito {
+  @include tarjeta-sombra(18px);
+  padding: 1.8rem;
+  border: 1px solid var(--color-borde);
+}
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-borde);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.badge-ahorro {
+  background-color: rgba(16, 124, 65, 0.12);
+  color: var(--color-secundario);
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.alerta-nino {
+  border-left: 6px solid var(--color-peligro);
+  background: linear-gradient(to right, #fff5f5, #ffffff);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.06);
+}
+
+// Tarjeta de perfil (Sobre Mí)
+.card-perfil {
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.avatar-circular {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  font-size: 2.3rem;
+  font-weight: 800;
+  box-shadow: 0 8px 20px rgba(16, 124, 65, 0.3);
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, #107c41, #0d6efd);
+}
+
+// 13. DISEÑO RESPONSIVO CON MEDIA QUERIES (Requisito 4)
+// Celular: 576px o menos
+@media (max-width: 576px) {
+  .menu-navegacion {
+    flex-direction: column; // Menú en columna
+    width: 100%;
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .catalogo-grid {
+    grid-template-columns: 1fr; // Una tarjeta por fila en celular
+  }
+
+  .contenedor-tienda {
+    display: flex;
+    flex-direction: column; // Carrito debajo del catálogo en celular
+  }
+
+  .seccion-hero {
+    padding: 2.5rem 1.25rem;
+    text-align: center;
+  }
+
+  #buscador-input {
+    width: 100%;
+  }
+}
+
+// Tablet: entre 577px y 991px
+@media (min-width: 577px) and (max-width: 991px) {
+  .catalogo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .contenedor-tienda {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Computador / Escritorio: 992px en adelante
+@media (min-width: 992px) {
+  .contenedor-tienda {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+}

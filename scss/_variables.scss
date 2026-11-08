@@ -1,0 +1,20 @@
+// _variables.scss - Parcial de variables y configuración
+// Paleta de colores refinada y moderna (cumple con mínimo 4 colores en variables)
+$color-primario: #0d6efd;       // Azul tecnológico / confiabilidad
+$color-secundario: #107c41;     // Verde esmeralda ecológico de alto impacto
+$color-secundario-dark: #0a522a;
+$color-acento: #ff9f1c;         // Ámbar energía / atención
+$color-acento-hover: #f38b00;
+$color-fondo-claro: #f4f7f6;    // Superficie suave y limpia
+$color-superficie: #ffffff;     // Blanco tarjetas
+$color-oscuro: #1e293b;         // Slate oscuro elegante
+$color-texto-muted: #64748b;    // Gris azulado legible
+$color-borde: #e2e8f0;          // Borde sutil moderno
+$color-borde-hover: #cbd5e1;
+$color-peligro: #ef4444;        // Rojo alerta
+
+// Tipografía y transiciones
+$fuente-principal: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$transicion-suave: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$radio-tarjeta: 16px;
+$radio-boton: 10px;
