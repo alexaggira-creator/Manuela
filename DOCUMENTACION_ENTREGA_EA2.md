@@ -107,24 +107,22 @@ Se escribe en un archivo independiente con extensión `.css` (como `css/estilos.
 
 ## 6. Procedimiento para GitHub y Etiqueta `ea2` (Requisito 9)
 
+- **Repositorio de GitHub:** `https://github.com/alexaggira-creator/ecotienda-alexandragomez.git`
+- **Enlace del Sitio en GitHub Pages:** `https://alexaggira-creator.github.io/ecotienda-alexandragomez/`
+- **Etiqueta oficial creada:** `ea2` (subida exitosamente al repositorio remoto)
+
 ```bash
-# 1. Asegurar configuración de autoría con tu nombre
+# 1. Configuración de autoría con tu nombre
 git config user.name "Alexandra Gómez"
 git config user.email "alexandra.gomez@correo.com"
 
-# 2. Guardar y registrar cambios (mínimo 3 commits requeridos)
-git add .
-git commit -m "feat: maquetacion semantica HTML5, portada con datos de El Niño y sobre mi"
-
-git add .
-git commit -m "style: arquitectura modular Sass, mixin de sombras y personalizacion de Bootstrap"
-
-git add .
-git commit -m "feat: motor dinamico en JavaScript, filtros, buscador reactivo y calculo de retorno"
+# 2. Commits registrados (3 commits propios realizados):
+# Commit 1: feat: maquetacion semantica HTML5, portada con datos de El Nino y pagina sobre mi
+# Commit 2: style: arquitectura modular Sass, mixin de sombras y personalizacion de Bootstrap
+# Commit 3: fix: actualizar imagenes funcionales de catalogo y finalizar logica de carrito
 
 # 3. Vincular con tu repositorio público en GitHub
-# (Crea tu repositorio en github.com con el nombre ecotienda-alexandragomez o ecotienda-equipo1)
-git remote add origin https://github.com/TU_USUARIO_GITHUB/ecotienda-equipo1.git
+git remote add origin https://github.com/alexaggira-creator/ecotienda-alexandragomez.git
 git branch -M main
 git push -u origin main
 
